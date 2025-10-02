@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubernate-deploy
+  labels:
+    app: kubernate-deploy
+spec:
+  replicas: 2   # kitne pods run karne hai
+  selector:
+    matchLabels:
+      app: kubernate-deploy
+  template:
+    metadata:
+      labels:
+        app: kubernate-deploy
+    spec:
+      containers:
+        - name: kubernate-deploy
+          image: pravinbabar23/kubernate_demo:latest   # DockerHub image ka naam
+          ports:
+            - containerPort: 8080   # Spring Boot default port
